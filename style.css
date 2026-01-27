@@ -72,7 +72,7 @@ header .container {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #fef08a 0%, #86efac 100%);
+    background: #dcfce7;
     color: #166534;
     text-align: center;
     padding: 6rem 2rem;
