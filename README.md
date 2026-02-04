@@ -1,30 +1,30 @@
-# 🌟 SkinGlow - Full-Stack Skincare E-Commerce Platform
+# SkinGlow - Full-Stack Skincare E-Commerce Platform
 
-A modern, scalable full-stack web application for a premium skincare product store. Built with React (frontend), Node.js/Express (backend), and containerized with Docker.
+SkinGlow is a full-stack skincare e-commerce application. It provides a product catalog, cart actions, and a contact form on the frontend, backed by a REST API that serves products and stores cart/contact data. The app is built with React and Node.js/Express and is fully containerized with Docker for consistent setup and deployment.
 
-## 🎯 Features
+##  Features
 
-✨ **Frontend (React)**
+ **Frontend (React)**
 - Responsive product catalog with dynamic loading
 - Shopping cart functionality
 - Contact form with validation
 - Modern gradient-based UI design
 - Real-time cart updates
 
-⚙️ **Backend (Node.js/Express)**
+ **Backend (Node.js/Express)**
 - RESTful API for products and cart management
 - CORS-enabled for cross-origin requests
 - Error handling and validation
 - Health check endpoint
 - Environment variable configuration
 
-🐳 **Docker & Orchestration**
+ **Docker & Orchestration**
 - Docker containerization for both frontend and backend
 - Docker Compose for easy multi-container deployment
 - Nginx reverse proxy for production
 - Health checks and automatic restarts
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 GITOKER/
@@ -56,11 +56,11 @@ GITOKER/
 └── README.md                # This file
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js 18+ (for local development)
-- Docker & Docker Compose (for containerized deployment)
+- Docker Desktop (includes Docker Compose)
 - Git
 
 ### Option 1: Local Development
@@ -83,13 +83,13 @@ The app will open at `http://localhost:3000`
 
 ### Option 2: Docker Compose (Recommended)
 
-**Build and run all services:**
+**Run all services (pulls images from Docker Hub):**
 ```bash
-docker-compose up --build
+docker compose up -d
 ```
 
 The application will be available at:
-- Frontend: `http://localhost`
+- Frontend: `http://localhost:3000`
 - Backend API: `http://localhost/api`
 
 **Stop services:**
@@ -97,7 +97,78 @@ The application will be available at:
 docker-compose down
 ```
 
-## 📚 API Endpoints
+##  Dockerization Details
+
+### Why Docker is used
+- Ensures a consistent environment across machines
+- Simplifies setup for reviewers and mentors
+- Matches a production-like environment using Nginx + Node
+
+### How the app is containerized
+- **Frontend** uses a multi-stage build: React is built in a Node image, then served by Nginx
+- **Backend** runs an Express server with SQLite via Sequelize
+- **Docker Compose** orchestrates both containers and connects them on a shared network
+
+### Run with Docker (Step-by-step)
+```bash
+docker compose up -d
+```
+Open:
+- Frontend: `http://localhost:3000`
+- Backend health: `http://localhost:5000/api/health`
+
+Stop containers:
+```bash
+docker-compose down
+```
+
+### Option 3: Pull and run manually (optional)
+
+Your friend can pull and run the images directly without building:
+
+**Step 1: Pull images**
+```bash
+docker pull manushreepb/skinglow-backend:latest
+docker pull manushreepb/skinglow-frontend:latest
+```
+
+**Step 2: Create a Docker network**
+```bash
+docker network create skinglow-net
+```
+
+**Step 3: Run backend container**
+```bash
+docker run -d \
+  --name skinglow-backend \
+  --network skinglow-net \
+  -p 5000:5000 \
+  -e NODE_ENV=production \
+  -e PORT=5000 \
+  manushreepb/skinglow-backend:latest
+```
+
+**Step 4: Run frontend container**
+```bash
+docker run -d \
+  --name skinglow-frontend \
+  --network skinglow-net \
+  -p 3000:3000 \
+  manushreepb/skinglow-frontend:latest
+```
+
+**Open the app:**
+- Frontend: `http://localhost:3000`
+- Backend health: `http://localhost:5000/api/health`
+
+**Stop and remove:**
+```bash
+docker stop skinglow-backend skinglow-frontend
+docker rm skinglow-backend skinglow-frontend
+```
+
+
+##  API Endpoints
 
 ### Products
 - `GET /api/products` - Get all products
@@ -142,7 +213,7 @@ npm run build
 
 The optimized build will be in `frontend/build/`
 
-## 🐳 Docker Commands
+##  Docker Commands
 
 **Build images individually:**
 ```bash
@@ -159,10 +230,10 @@ docker build -t skinglow-backend ./backend
 docker run -p 5000:5000 skinglow-backend
 
 # Frontend
-docker run -p 80:80 skinglow-frontend
+docker run -p 3000:3000 skinglow-frontend
 ```
 
-## 📝 Environment Variables
+##  Environment Variables
 
 **Backend (.env):**
 ```
@@ -175,7 +246,38 @@ NODE_ENV=production
 REACT_APP_API_URL=http://localhost/api
 ```
 
-## 🔄 Next Steps - Git & Deployment
+##  Testing
+
+### Test Frameworks
+- **Backend**: Jest + Supertest
+- **Frontend**: Jest + React Testing Library
+
+### What tests cover
+- **API integration tests**: health check, products, cart, contact
+- **Validation and edge cases**: input validation, quantity/price constraints
+- **Frontend UI tests**: header rendering, cart count, loading/error states
+
+### Run tests locally
+```bash
+cd backend
+npm test
+```
+
+```bash
+cd frontend
+npm test
+```
+
+### Run tests in Docker
+```bash
+docker-compose exec backend npm test
+```
+
+```bash
+docker-compose exec frontend npm test
+```
+
+##  Next Steps - Git & Deployment
 
 ### Initialize Git Repository
 ```bash
@@ -199,7 +301,7 @@ Options:
 - **DigitalOcean App Platform** - Simple container deployment
 - **Vercel** (Frontend) + Render/Railway (Backend)
 
-## 📦 Technologies Used
+##  Technologies Used
 
 - **Frontend**: React 18, Axios, CSS3
 - **Backend**: Node.js, Express.js, CORS
@@ -207,7 +309,7 @@ Options:
 - **Web Server**: Nginx (Alpine Linux)
 - **Version Control**: Git
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -215,11 +317,11 @@ Options:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 💡 Tips
+##  Tips
 
 - Use `docker-compose logs -f` to view real-time logs
 - Check health status: `curl http://localhost/api/health`
@@ -227,4 +329,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**Happy coding! 🎨✨**
+

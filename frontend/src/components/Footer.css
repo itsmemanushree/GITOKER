@@ -1,9 +1,10 @@
 .footer {
-  background-color: #333;
+  background: linear-gradient(135deg, #2d1810 0%, #1a0f08 100%);
   color: white;
   padding: 2rem;
   text-align: center;
   margin-top: auto;
+  border-top: 3px solid #ff6b35;
 }
 
 .footer .container {

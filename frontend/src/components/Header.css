@@ -1,8 +1,8 @@
 .header {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
   color: white;
   padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -38,11 +38,12 @@
 
 .cart-btn {
   background-color: white;
-  color: #10b981;
+  color: #ff6b35;
   padding: 0.6rem 1.2rem;
   border-radius: 20px;
   font-weight: bold;
   transition: transform 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
 }
 
 .cart-btn:hover {

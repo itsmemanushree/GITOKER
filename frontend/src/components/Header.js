@@ -14,7 +14,7 @@ function Header({ cartCount, onCartClick, showCart }) {
   return (
     <header className="header">
       <div className="container">
-        <div className="logo">✨ SkinGlow</div>
+        <div className="logo">SkinGlow</div>
         <nav className="nav">
           <a href="#home" onClick={handleHomeClick}>Home</a>
           <a href="#products">Products</a>

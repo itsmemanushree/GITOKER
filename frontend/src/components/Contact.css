@@ -1,6 +1,6 @@
 .contact {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #fbbf24 100%);
   color: white;
 }
 
@@ -81,7 +81,7 @@
 
 .submit-btn {
   background-color: white;
-  color: #10b981;
+  color: #ff6b35;
   padding: 1rem;
   border-radius: 5px;
   font-weight: bold;
@@ -89,6 +89,7 @@
   cursor: pointer;
   transition: transform 0.2s;
   border: none;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
 }
 
 .submit-btn:hover {

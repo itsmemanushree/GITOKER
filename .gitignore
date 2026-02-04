@@ -34,5 +34,9 @@ lerna-debug.log*
 coverage/
 .nyc_output/
 
+# Database
+*.sqlite
+*.db
+
 # OS
 Thumbs.db

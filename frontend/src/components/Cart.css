@@ -12,7 +12,7 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #10b981;
+  color: #ff6b35;
 }
 
 .empty-cart {
@@ -31,7 +31,7 @@
 
 .continue-shopping {
   display: inline-block;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #fbbf24 100%);
   color: white;
   padding: 0.7rem 1.5rem;
   border-radius: 20px;
@@ -39,6 +39,7 @@
   border: none;
   cursor: pointer;
   transition: transform 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .continue-shopping:hover {
@@ -49,8 +50,8 @@
   display: block;
   width: 100%;
   background-color: white;
-  color: #10b981;
-  border: 2px solid #10b981;
+  color: #ff6b35;
+  border: 2px solid #ff6b35;
   padding: 0.7rem;
   border-radius: 20px;
   font-weight: bold;
@@ -140,13 +141,13 @@
 .cart-summary h3 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #10b981;
+  color: #ff6b35;
 }
 
 .checkout-btn {
   display: block;
   width: 100%;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #fbbf24 100%);
   color: white;
   padding: 1rem;
   border-radius: 20px;
@@ -154,6 +155,7 @@
   font-size: 1.1rem;
   margin-bottom: 1rem;
   transition: transform 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .checkout-btn:hover {

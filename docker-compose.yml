@@ -1,11 +1,7 @@
-version: '3.8'
-
 services:
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: skinglow-backend
+    image: manushreepb/skinglow-backend:latest
+    container_name: gitoker-backend
     ports:
       - "5000:5000"
     environment:
@@ -14,25 +10,26 @@ services:
     networks:
       - skinglow-network
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/api/health"]
+      test: [ "CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/api/health" ]
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: always
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: skinglow-frontend
+    image: manushreepb/skinglow-frontend:latest
+    container_name: gitoker-frontend
     ports:
-      - "80:80"
+      - "3000:3000"
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     networks:
       - skinglow-network
     environment:
       - REACT_APP_API_URL=http://localhost/api
+      - HOST=0.0.0.0
+    restart: always
+
 
 networks:
   skinglow-network:
