@@ -27,14 +27,8 @@ git clone https://github.com/itsmemanushree/GITOKER.git
 cd GITOKER
 ```
 
-### Step 3: Start the app
+### Step 3: Build and start the app
 ```bash
-docker compose up -d
-```
-
-### Step 4: Open the app
-- Frontend: http://localhost:3000
-- Backend health check: http://localhost:5000/api/health
 
 ### Step 5: Stop the app
 ```bash
@@ -85,12 +79,36 @@ docker compose exec frontend npm test
 
 ---
 
-## Docker images used
-These are already built and published:
-- manushreepb/skinglow-backend:latest
-- manushreepb/skinglow-frontend:latest
+## Environment variables
+### Backend
+- `PORT` (default `5000`)
+- `NODE_ENV` (use `production` in Docker)
 
-Docker Compose will pull them automatically.
+### Frontend
+- `REACT_APP_API_URL` (default `http://localhost:5000/api` for local dev)
+
+## API routes
+Base URL (local dev): `http://localhost:5000`
+
+### Health
+- `GET /api/health`
+
+### Products
+- `GET /api/products`
+- `GET /api/products/:id`
+
+### Cart
+- `GET /api/cart`
+- `POST /api/cart`
+- `PUT /api/cart/:id`
+- `DELETE /api/cart/:id`
+
+### Contact
+- `GET /api/contact`
+- `GET /api/contact/:id`
+- `POST /api/contact`
+- `PUT /api/contact/:id`
+- `DELETE /api/contact/:id`
 
 ---
 

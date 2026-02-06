@@ -7,10 +7,10 @@ WORKDIR /app
 RUN apk add --no-cache python3 make g++
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json ./
 
-# Install ALL dependencies (including devDependencies for building)
-RUN npm ci
+# Install dependencies (lockfile not required)
+RUN npm install
 
 # Copy server code
 COPY . .
@@ -21,10 +21,13 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy only production dependencies and built code from builder
-COPY --from=builder /app/package.json /app/package-lock.json ./
+COPY --from=builder /app/package.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/server.js ./
 COPY --from=builder /app/.env* ./
+
+# Healthcheck uses wget
+RUN apk add --no-cache wget
 
 # Create non-root user for security
 RUN addgroup -g 1001 -S nodejs && \
