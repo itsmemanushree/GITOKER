@@ -1,6 +1,6 @@
 services:
   backend:
-    image: manushreepb/skinglow-backend:latest
+    build: ./backend
     container_name: gitoker-backend
     ports:
       - "5000:5000"
@@ -17,7 +17,7 @@ services:
     restart: always
 
   frontend:
-    image: manushreepb/skinglow-frontend:latest
+    build: ./frontend
     container_name: gitoker-frontend
     ports:
       - "3000:3000"

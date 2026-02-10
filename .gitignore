@@ -27,9 +27,6 @@ lerna-debug.log*
 *.swn
 .DS_Store
 
-# Docker
-.dockerignore
-
 # Testing
 coverage/
 .nyc_output/
