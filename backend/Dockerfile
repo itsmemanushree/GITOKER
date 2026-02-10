@@ -7,10 +7,10 @@ WORKDIR /app
 RUN apk add --no-cache python3 make g++
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json ./
 
-# Install production dependencies
-RUN npm ci --only=production
+# Install dependencies
+RUN npm install
 
 # Copy server code
 COPY server.js ./
